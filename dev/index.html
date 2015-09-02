@@ -10,11 +10,24 @@
   <body>
     <header><h1>There's No &ldquo;I&rdquo; in Quit</h1></header>
 
-    <footer></footer>
+      <section id="insp-app-body">
+        <ul id="insp-list"></ul>
+      </section>
+
+    <footer>There's no I in footer, either.</footer>
+
+    <!-- Handlebar Templates -->
+    <script id="insp-entry-template" type="text/x-handlebars-template">
+      <p>Title: {{ title }}</p>
+    </script>
+
+    <!-- Required Scripts -->
     <script src="assets/js/lib/underscore-min.js"></script>
     <script src="assets/js/lib/jquery-1.11.3.min.js"></script>
     <script src="assets/js/lib/backbone-min.js"></script>
     <script src="assets/js/lib/handlebars-v4.0.0.js"></script>
+
+    <!-- Backbone files -->
     <script src="assets/js/models/inspiration.js"></script>
     <script src="assets/js/collections/inspirations.js"></script>
     <script src="assets/js/routers/routes.js"></script>
