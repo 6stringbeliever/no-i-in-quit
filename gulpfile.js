@@ -18,7 +18,7 @@ var del = require('del');
 
 // Lint JavaScript
 gulp.task('lint', function() {
-    return gulp.src('dev/js/*.js')
+    return gulp.src('dev/assets/js/*.js')
                .pipe(jshint())
                .pipe(jshint.reporter('default'));
 });
@@ -33,16 +33,16 @@ gulp.task('minifyhtml', function() {
 
 // Compile Sass
 gulp.task('sass', function () {
-  return gulp.src('dev/css/*.scss')
+  return gulp.src('dev/assets/scss/*.scss')
              .pipe(sass({outputStyle: 'compressed'}))
-             .pipe(gulp.dest('dist/css'));
+             .pipe(gulp.dest('dist/assets/css'));
 });
 
 // Minify JavaScript
 gulp.task('minifyjs', function() {
-  return gulp.src('dev/js/*.js')
+  return gulp.src('dev/assets/js/*.js')
              .pipe(uglify())
-             .pipe(gulp.dest('dist/js/'));
+             .pipe(gulp.dest('dist/assets/js/'));
 });
 
 // Move images with PNG or JPG extension
@@ -53,20 +53,20 @@ gulp.task('moveimages', function() {
 
 // Move lib css files; don't need to do this every time
 gulp.task('movelibcss', function() {
-  return gulp.src('dev/css/lib/*.css')
+  return gulp.src('dev/assets/css/lib/*.css')
              .pipe(gulp.dest('dist/css/lib/'));
 });
 
 // Move lib js files; don't need to do this every time
 gulp.task('movelibjs', function() {
-  return gulp.src('dev/js/lib/*.js')
-  .pipe(gulp.dest('dist/js/lib/'));
+  return gulp.src('dev/assets/js/lib/*.js')
+  .pipe(gulp.dest('dist/assets/js/lib/'));
 });
 
 // Move js files because we don't want to minify when developing
 gulp.task('movejs', function() {
-  return gulp.src('dev/js/*.js')
-  .pipe(gulp.dest('dist/js//'));
+  return gulp.src('dev/assets/js/*.js')
+  .pipe(gulp.dest('dist/assets/js/'));
 });
 
 gulp.task('clean', function(cb) {
@@ -83,13 +83,13 @@ gulp.task('default', ['lint', 'sass', 'minifyhtml', 'minifyjs', 'moveimages']);
 // Since this is for dev, we don't minify the js for debugging
 gulp.task('watch', function() {
   // Watch Sass files and update
-  gulp.watch('dev/css/*.scss', ['sass']);
+  gulp.watch('dev/assets/scss/*.scss', ['sass']);
 
   // Watch HTML files and minify output
   gulp.watch('dev/*.html', ['minifyhtml']);
 
   // Watch js files and lint and move output
-  gulp.watch('dev/js/*.js', ['lint', 'movejs']);
+  gulp.watch('dev/assets/js/*.js', ['lint', 'movejs']);
 });
 
 // Prepare for actual dist, clean the directory, then build and minify
