@@ -1,15 +1,16 @@
 [{
-  "text": "There's no I in quit.",
-  "shortName": "Quit",
-  "photo": "http://placehold.it/350x150"
+  "quoteHTML": "There's no “I” in quit.",
+  "shortName": "Quit"
   },
 {
-  "text": "Abanndon all hope, ye who enter.",
-  "shortName": "Hope",
-  "photo": "http://placekitten.com/200/300"
+  "quoteHTML": "Abandon <b>all</b> hope, ye who enter.",
+  "shortName": "Hope"
   },
 {
-  "text": "Don't make shitty shit that's shitty.",
-  "shortName": "Make",
-  "photo": "http://placekitten.com/200/300"
+  "quoteHTML": "Don't make shitty shit that's shitty.",
+  "shortName": "Make"
+  },
+{
+  "quoteHTML": "What doesn't kill you only makes you stronger. Except Polio.",
+  "shortName": "Stronger"
   }]

@@ -6,6 +6,7 @@
     <title>There's No &ldquo;I&rdquo; in Quit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Prepare to be inspired.">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
     <header><h1>There's No &ldquo;I&rdquo; in Quit</h1></header>
@@ -17,8 +18,9 @@
     <footer>There's no I in footer, either.</footer>
 
     <!-- Handlebar Templates -->
-    <script id="insp-entry-template" type="text/x-handlebars-template">
-      <p>Title: {{ text }}</p>
+    <script id="insp-entry-list-tmpl" type="text/x-handlebars-template">
+      <p>Title: {{{ quoteHTML }}}</p>
+      <p>Safe: {{ stripHTML quoteHTML }}</p>
       <img src="{{ photo }}" alt="{{ shortName }}" title="{{ shortName }}">
     </script>
 
@@ -35,5 +37,14 @@
     <script src="assets/js/views/inspirationview.js"></script>
     <script src="assets/js/views/appview.js"></script>
     <script src="assets/js/app.js"></script>
+
+    <script>
+      Handlebars.registerHelper('stripHTML', function(text) {
+        var div = document.createElement('div');
+        div.innerHTML = text;
+        var clearstring = div.textContext || div.innerText || '';
+        return new Handlebars.SafeString(clearstring)
+      });
+    </script>
   </body>
 </html>
