@@ -1,13 +1,3 @@
-/*
-Getting started:
-Create your package.json:
-npm init
-Install gulp locally:
-sudo npm install --save-dev gulp
-Install all the packages below:
-sudo npm install --save-dev gulp-sass gulp-jshint gulp-uglify gulp-minify-html gulp-minify-inline del
-*/
-
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var jshint = require('gulp-jshint');
@@ -25,10 +15,10 @@ gulp.task('lint', function() {
 
 // Minify HTML and inline scripts and CSS
 gulp.task('minifyhtml', function() {
-  return gulp.src('dev/**/*.html')
-             .pipe(minifyHTML())
-             .pipe(minifyInline())
-             .pipe(gulp.dest('dist'));
+  return gulp.src('dev/**/*.html').pipe(gulp.dest('dist'));
+            //  .pipe(minifyHTML())
+            //  .pipe(minifyInline({jsSelector: 'script[type!="text/x-handlebars-template"]'}))
+            //  .pipe(gulp.dest('dist'));
 });
 
 // Compile Sass
@@ -40,7 +30,7 @@ gulp.task('sass', function () {
 
 // Minify JavaScript
 gulp.task('minifyjs', function() {
-  return gulp.src('dev/assets/js/*.js')
+  return gulp.src('dev/assets/js/**/*.js')
              .pipe(uglify())
              .pipe(gulp.dest('dist/assets/js/'));
 });
@@ -63,6 +53,11 @@ gulp.task('movelibjs', function() {
   .pipe(gulp.dest('dist/assets/js/lib/'));
 });
 
+gulp.task('movedata', function() {
+  return gulp.src('dev/assets/data/*.json')
+    .pipe(gulp.dest('dist/assets/data/'));
+});
+
 // Move js files because we don't want to minify when developing
 gulp.task('movejs', function() {
   return gulp.src('dev/assets/js/*.js')
@@ -77,7 +72,7 @@ gulp.task('clean', function(cb) {
 gulp.task('movelib', ['movelibcss', 'movelibjs']);
 
 // Do everything by default
-gulp.task('default', ['lint', 'sass', 'minifyhtml', 'minifyjs', 'moveimages']);
+gulp.task('default', ['lint', 'sass', 'minifyhtml', 'minifyjs', 'moveimages', 'movedata']);
 
 // Watch HTML, Sass, JavaScript files and update on change
 // Since this is for dev, we don't minify the js for debugging
@@ -95,6 +90,6 @@ gulp.task('watch', function() {
 // Prepare for actual dist, clean the directory, then build and minify
 // everything.
 gulp.task('build', ['clean'], function() {
-  gulp.start('moveimages', 'movelibcss', 'movelibjs', 'minifyhtml',
+  gulp.start('moveimages', 'movelibcss', 'movelibjs', 'minifyhtml', 'movedata',
               'sass', 'minifyjs');
 });
