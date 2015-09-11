@@ -6,6 +6,7 @@
     <title>There's No &ldquo;I&rdquo; in Quit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Prepare to be inspired.">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,700,900,300italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
@@ -42,8 +43,8 @@
       Handlebars.registerHelper('stripHTML', function(text) {
         var div = document.createElement('div');
         div.innerHTML = text;
-        var clearstring = div.textContext || div.innerText || '';
-        return new Handlebars.SafeString(clearstring)
+        var clearstring = div.textContent || div.innerText || '';
+        return new Handlebars.SafeString(clearstring);
       });
     </script>
   </body>
