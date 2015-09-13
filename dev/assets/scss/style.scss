@@ -39,7 +39,9 @@ h1 {
 }
 
 .insp-item {
+  position: relative;
   @include span-columns(4);
+  margin-bottom: 16px;
   &:nth-child(3) {
     margin-right: 0;
   }
@@ -47,4 +49,19 @@ h1 {
 
 .insp-item-img {
   max-width: 100%;
+}
+
+.insp-entry-list-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(42, 42, 42, 0.3);
+}
+
+.insp-entry-shortname {
+  text-align: center;;
+  text-transform: uppercase;
+  font-size: 2em;
+  color: white;
+  padding: 8px;
 }
