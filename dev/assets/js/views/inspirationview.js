@@ -1,7 +1,7 @@
 var app = app || {};
 
 var InspirationView = Backbone.View.extend({
-  tagName: 'li',
+  tagName: 'div',
   className: 'insp-item',
   template: Handlebars.compile($('#insp-entry-list-tmpl').html()),
   initialize: function() {

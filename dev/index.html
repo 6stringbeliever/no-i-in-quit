@@ -10,19 +10,23 @@
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
-    <header><h1>There's No &ldquo;I&rdquo; in Quit</h1></header>
+    <header><div class="footer-contents"><h1>There's No <strong>&ldquo;I&rdquo;</strong> in Quit</h1></div></header>
 
       <section id="insp-app-body">
-        <ul id="insp-list"></ul>
+        <div id="insp-list"></div>
       </section>
 
-    <footer>There's no I in footer, either.</footer>
+    <footer>
+      <div class="footer-contents">
+        <div class="footer-main">There's no &ldquo;I&rdquo; in footer, either.</div>
+      </div>
+    </footer>
 
     <!-- Handlebar Templates -->
     <script id="insp-entry-list-tmpl" type="text/x-handlebars-template">
       <p>Title: {{{ quoteHTML }}}</p>
       <p>Safe: {{ stripHTML quoteHTML }}</p>
-      <img src="{{ photo }}" alt="{{ shortName }}" title="{{ shortName }}">
+      <img src="{{ photo }}" alt="{{ shortName }}" title="{{ shortName }}" class="insp-item-img">
     </script>
 
     <!-- Required Scripts -->

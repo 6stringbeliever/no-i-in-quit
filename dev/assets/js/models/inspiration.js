@@ -4,6 +4,6 @@ var Inspiration = Backbone.Model.extend({
   defaults: {
     "quoteHTML": "",
     "shortName": "",
-    "photo": "http://placehold.it/350x150"
+    "photo": "http://placehold.it/450x450"
   }
 });

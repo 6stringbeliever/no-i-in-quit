@@ -25,4 +25,26 @@ h1 {
   font-size: 22px;
   color: #eee;
   text-transform: uppercase;
+  b {
+    font-weight: bold;
+  }
+}
+
+.footer-contents, #insp-list {
+  @include outer-container();
+}
+
+.footer-main {
+  @include span-columns(12);
+}
+
+.insp-item {
+  @include span-columns(4);
+  &:nth-child(3) {
+    margin-right: 0;
+  }
+}
+
+.insp-item-img {
+  max-width: 100%;
 }
