@@ -15,10 +15,10 @@ gulp.task('lint', function() {
 
 // Minify HTML and inline scripts and CSS
 gulp.task('minifyhtml', function() {
-  return gulp.src('dev/**/*.html').pipe(gulp.dest('dist'));
-            //  .pipe(minifyHTML())
-            //  .pipe(minifyInline({jsSelector: 'script[type!="text/x-handlebars-template"]'}))
-            //  .pipe(gulp.dest('dist'));
+  return gulp.src('dev/**/*.html')
+             .pipe(minifyHTML())
+             .pipe(minifyInline({jsSelector: 'script[type!="text/x-handlebars-template"]'}))
+             .pipe(gulp.dest('dist'));
 });
 
 // Compile Sass
@@ -60,7 +60,7 @@ gulp.task('movedata', function() {
 
 // Move js files because we don't want to minify when developing
 gulp.task('movejs', function() {
-  return gulp.src('dev/assets/js/*.js')
+  return gulp.src('dev/assets/js/**/*.js')
   .pipe(gulp.dest('dist/assets/js/'));
 });
 
@@ -84,7 +84,7 @@ gulp.task('watch', function() {
   gulp.watch('dev/*.html', ['minifyhtml']);
 
   // Watch js files and lint and move output
-  gulp.watch('dev/assets/js/*.js', ['lint', 'movejs']);
+  gulp.watch('dev/assets/js/**/*.js', ['movejs']);
 });
 
 // Prepare for actual dist, clean the directory, then build and minify
