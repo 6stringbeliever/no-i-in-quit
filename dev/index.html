@@ -24,9 +24,10 @@
 
     <!-- Handlebar Templates -->
     <script id="insp-entry-list-tmpl" type="text/x-handlebars-template">
-      <p>Title: {{{ quoteHTML }}}</p>
-      <p>Safe: {{ stripHTML quoteHTML }}</p>
       <img src="{{ photo }}" alt="{{ shortName }}" title="{{ shortName }}" class="insp-item-img">
+      <div class="insp-entry-list-overlay">
+        <p class="insp-entry-shortname">{{ shortName }}</p>
+      </div>
     </script>
 
     <!-- Required Scripts -->
