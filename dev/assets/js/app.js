@@ -1,9 +1,9 @@
 var app = app || {};
 
-Backbone.sync = function(method, model, success, error) {
-    success();
-};
-
 $(function() {
-  var appview = new app.AppView();
+  var obj = _.clone(Backbone.Events);
+  app.InspiredRoutes = new InspiringRouter({ 'dispatch': obj });
+  var appview = new app.AppView({ 'dispatch': obj });
+
+  Backbone.history.start();
 });
